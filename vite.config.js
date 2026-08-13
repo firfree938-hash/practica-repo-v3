@@ -10,7 +10,7 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/css/usuarios/index.css',
                 ...auth,
-                'resources/css/usuarios/view.css'
+
                 
             ],
             refresh: true,
