@@ -6,6 +6,22 @@ use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
 
+Route::get('/debug/proxy', function (Illuminate\Http\Request $request) {
+    return response()->json([
+        'ip' => $request->ip(),
+        'secure' => $request->isSecure(),
+        'scheme' => $request->getScheme(),
+        'host' => $request->getHost(),
+
+        'x_real_ip' => $request->header('X-Real-IP'),
+        'x_forwarded_for' => $request->header('X-Forwarded-For'),
+        'x_forwarded_proto' => $request->header('X-Forwarded-Proto'),
+        'x_forwarded_host' => $request->header('X-Forwarded-Host'),
+
+        'railway_edge' => $request->header('X-Railway-Edge'),
+        'railway_request_id' => $request->header('X-Railway-Request-Id'),
+    ]);
+});
 
 
 Route::get('/', function () {
